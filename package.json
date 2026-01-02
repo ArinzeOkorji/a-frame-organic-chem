@@ -1,0 +1,26 @@
+{
+  "name": "inorganic-chem-xr",
+  "version": "1.0.0",
+  "description": "A-Frame Inorganic Chemistry Visualization",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "aframe",
+    "webxr",
+    "chemistry"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@vitejs/plugin-basic-ssl": "^1.1.0",
+    "vite": "^5.0.0"
+  },
+  "dependencies": {
+    "aframe": "^1.7.1",
+    "aframe-environment-component": "^1.5.0",
+    "localtunnel": "^2.0.2"
+  }
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inorganic Chemistry AR - Methane</title>
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+</head>
+
+<body style="margin: 0; overflow: hidden;">
+  <!-- 
+      AR.js Scene
+      - sourceWidth/Height and displayWidth/Height ensure better resolution on mobile
+    -->
+  <a-scene embedded
+    arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
+
+    <!-- 
+           IMPORTANT: CUSTOM MARKER SETUP
+           1. The image 'src/markers/methane.png' has been generated.
+           2. T0 use it, you must generate a .patt file.
+           3. Go to: https://jeromeetienne.github.io/AR.js/three.js/examples/marker-training/examples/generator.html
+           4. Upload 'src/markers/methane.png'.
+           5. Download the .patt file.
+           6. Save it as 'src/markers/pattern-methane.patt'.
+      -->
+    <a-marker type="pattern" url="src/markers/pattern-methane.patt">
+
+      <!-- Methane (CH4) Molecule Container -->
+      <a-entity position="0 0.5 0" scale="0.5 0.5 0.5">
+        <!-- Carbon Atom (Central) -->
+        <a-sphere color="#2C3E50" radius="0.4" position="0 0 0"></a-sphere>
+
+        <!-- Hydrogen Atoms -->
+        <!-- Top -->
+        <a-sphere color="#ECF0F1" radius="0.2" position="0 0.6 0"></a-sphere>
+        <!-- Bottom Left Front -->
+        <a-sphere color="#ECF0F1" radius="0.2" position="-0.5 -0.3 0.5"></a-sphere>
+        <!-- Bottom Right Front -->
+        <a-sphere color="#ECF0F1" radius="0.2" position="0.5 -0.3 0.5"></a-sphere>
+        <!-- Back -->
+        <a-sphere color="#ECF0F1" radius="0.2" position="0 -0.3 -0.7"></a-sphere>
+
+        <!-- Bonds (Cylinders) -->
+        <a-cylinder color="#BDC3C7" height="0.6" radius="0.05" position="0 0.3 0"></a-cylinder>
+        <a-cylinder color="#BDC3C7" height="0.6" radius="0.05" position="-0.25 -0.15 0.25"
+          rotation="0 0 35"></a-cylinder>
+        <a-cylinder color="#BDC3C7" height="0.6" radius="0.05" position="0.25 -0.15 0.25"
+          rotation="0 0 -35"></a-cylinder>
+        <a-cylinder color="#BDC3C7" height="0.6" radius="0.05" position="0 -0.15 -0.35" rotation="45 0 0"></a-cylinder>
+
+        <!-- Label -->
+        <a-text value="Methane (CH4)" align="center" position="0 1 0" color="black" scale="2 2 2"></a-text>
+      </a-entity>
+
+    </a-marker>
+
+    <a-entity camera></a-entity>
+  </a-scene>
+</body>
+
+</html>
