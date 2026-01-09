@@ -125,6 +125,58 @@
       <a-text value="Helium (He)" align="center" position="0 1.5 0" color="black" scale="2 2 2"></a-text>
     </a-marker>
 
+    <!-- BARCODE 3: LITHIUM (Li)
+         Nucleus: 3 Protons, 4 Neutrons
+         Inner Shell (1s): 2 Electrons
+         Outer Shell (2s): 1 Electron
+    -->
+    <a-marker type="barcode" value="3">
+      <!-- Nucleus (Cluster of 7) -->
+      <a-entity position="0 0.5 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 12000; easing: linear">
+        <!-- Protons (3) -->
+        <a-sphere color="#2ECC71" radius="0.15" position="0 0.1 0"
+          info-click="title: Proton; desc: Lithium has 3 protons."></a-sphere>
+        <a-sphere color="#2ECC71" radius="0.15" position="-0.1 -0.05 0.1"
+          info-click="title: Proton; desc: Lithium has 3 protons."></a-sphere>
+        <a-sphere color="#2ECC71" radius="0.15" position="0.1 -0.05 -0.1"
+          info-click="title: Proton; desc: Lithium has 3 protons."></a-sphere>
+        <!-- Neutrons (4) -->
+        <a-sphere color="#E74C3C" radius="0.15" position="0.1 0.1 0.1"
+          info-click="title: Neutron; desc: Lithium-7 has 4 neutrons."></a-sphere>
+        <a-sphere color="#E74C3C" radius="0.15" position="-0.1 0.1 -0.1"
+          info-click="title: Neutron; desc: Lithium-7 has 4 neutrons."></a-sphere>
+        <a-sphere color="#E74C3C" radius="0.15" position="0 -0.1 0.1"
+          info-click="title: Neutron; desc: Lithium-7 has 4 neutrons."></a-sphere>
+        <a-sphere color="#E74C3C" radius="0.15" position="0 -0.1 -0.1"
+          info-click="title: Neutron; desc: Lithium-7 has 4 neutrons."></a-sphere>
+      </a-entity>
+
+      <!-- INNER SHELL (1s) - 2 Electrons -->
+      <a-torus color="#7F8C8D" radius="0.6" radius-tubular="0.005" rotation="45 0 0" position="0 0.5 0"
+        info-click="title: 1s Orbital; desc: The filled inner shell."></a-torus>
+      <a-entity rotation="45 0 0" position="0 0.5 0">
+        <a-entity animation="property: rotation; to: 0 0 360; loop: true; dur: 3000; easing: linear">
+          <a-sphere color="#00FFFF" radius="0.08" position="0.6 0 0"
+            info-click="title: Inner Electron; desc: Core electron in the 1s shell."></a-sphere>
+          <a-sphere color="#00FFFF" radius="0.08" position="-0.6 0 0"
+            info-click="title: Inner Electron; desc: Core electron in the 1s shell."></a-sphere>
+        </a-entity>
+      </a-entity>
+
+      <!-- OUTER SHELL (2s) - 1 Valance Electron -->
+      <a-torus color="#95A5A6" radius="1.1" radius-tubular="0.005" rotation="60 0 0" position="0 0.5 0"
+        info-click="title: 2s Orbital; desc: The outer shell containing the valence electron."></a-torus>
+      <a-entity rotation="60 0 0" position="0 0.5 0">
+        <a-entity animation="property: rotation; to: 0 0 360; loop: true; dur: 5000; easing: linear">
+          <!-- Moving slower (dur: 5000) because it's further out -->
+          <a-sphere color="#00FFFF" radius="0.08" position="1.1 0 0"
+            info-click="title: Valence Electron; desc: The single electron involved in chemical bonding."></a-sphere>
+        </a-entity>
+      </a-entity>
+
+      <a-text value="Lithium (Li)" align="center" position="0 1.8 0" color="black" scale="2 2 2"></a-text>
+    </a-marker>
+
     <!-- AR Camera -->
     <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
   </a-scene>
