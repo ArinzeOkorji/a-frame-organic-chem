@@ -4,12 +4,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Inorganic Chemistry AR - Period 1, 2</title>
+  <title>Inorganic Chemistry AR - Perfect Orbits</title>
   <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.4.5/aframe/build/aframe-ar.js"></script>
 
   <script>
-    // Interaction Component
     AFRAME.registerComponent('info-click', {
       schema: {
         title: { type: 'string', default: 'Info' },
@@ -33,7 +32,7 @@
     AFRAME.registerComponent('scene-logger', {
       init: function () {
         const log = document.createElement('div');
-        log.innerText = 'Loaded: Elements 1-10 (Periods 1 & 2)';
+        log.innerText = 'System Ready: Precise Orbits Loaded';
         log.style.cssText = 'position:fixed; top:10px; left:10px; color:lime; background:rgba(0,0,0,0.5); padding:5px; z-index:999; font-family:sans-serif; pointer-events:none;';
         document.body.appendChild(log);
       }
@@ -62,7 +61,7 @@
     <!-- 1: HYDROGEN (1) -->
     <a-marker type="barcode" value="1">
       <a-sphere color="#2ECC71" radius="0.2" position="0 0.5 0"
-        info-click="title: Proton; desc: Hydrogen Nucleus."></a-sphere>
+        info-click="title: Nucleus; desc: Hydrogen Nucleus."></a-sphere>
       <a-torus color="#7F8C8D" radius="0.6" radius-tubular="0.005" rotation="45 0 0" position="0 0.5 0"></a-torus>
       <a-entity rotation="45 0 0" position="0 0.5 0"><a-entity
           animation="property: rotation; to: 0 0 360; loop: true; dur: 3000; easing: linear"><a-sphere color="#00FFFF"
@@ -96,14 +95,13 @@
 
     <!-- 3: LITHIUM (2, 1) -->
     <a-marker type="barcode" value="3">
-      <a-sphere color="#2ECC71" radius="0.3" position="0 0.5 0"></a-sphere>
-      <!-- K Shell (2) -->
+      <a-sphere color="#2ECC71" radius="0.3" position="0 0.5 0"
+        info-click="title: Nucleus; desc: 3 Protons."></a-sphere>
       <a-torus color="#7F8C8D" radius="0.6" radius-tubular="0.005" rotation="45 0 0" position="0 0.5 0"></a-torus>
       <a-entity rotation="45 0 0" position="0 0.5 0"><a-entity
           animation="property: rotation; to: 0 0 360; loop: true; dur: 2000; easing: linear"><a-sphere color="#00FFFF"
             radius="0.05" position="0.6 0 0"></a-sphere><a-sphere color="#00FFFF" radius="0.05"
             position="-0.6 0 0"></a-sphere></a-entity></a-entity>
-      <!-- L Shell (1) -->
       <a-torus color="#95A5A6" radius="1.1" radius-tubular="0.005" rotation="60 0 0" position="0 0.5 0"></a-torus>
       <a-entity rotation="60 0 0" position="0 0.5 0"><a-entity
           animation="property: rotation; to: 0 0 360; loop: true; dur: 4000; easing: linear"><a-sphere color="#00FFFF"
@@ -116,13 +114,11 @@
     <a-marker type="barcode" value="4">
       <a-sphere color="#2ECC71" radius="0.35" position="0 0.5 0"
         info-click="title: Nucleus; desc: 4 Protons."></a-sphere>
-      <!-- K Shell (2) -->
       <a-torus color="#7F8C8D" radius="0.6" radius-tubular="0.005" rotation="45 0 0" position="0 0.5 0"></a-torus>
       <a-entity rotation="45 0 0" position="0 0.5 0"><a-entity
           animation="property: rotation; to: 0 0 360; loop: true; dur: 2000; easing: linear"><a-sphere color="#00FFFF"
             radius="0.05" position="0.6 0 0"></a-sphere><a-sphere color="#00FFFF" radius="0.05"
             position="-0.6 0 0"></a-sphere></a-entity></a-entity>
-      <!-- L Shell (2) -->
       <a-torus color="#95A5A6" radius="1.1" radius-tubular="0.005" rotation="60 0 0" position="0 0.5 0"></a-torus>
       <a-entity rotation="60 0 0" position="0 0.5 0"><a-entity
           animation="property: rotation; to: 0 0 360; loop: true; dur: 4000; easing: linear">
@@ -138,13 +134,11 @@
     <a-marker type="barcode" value="5">
       <a-sphere color="#2ECC71" radius="0.35" position="0 0.5 0"
         info-click="title: Nucleus; desc: 5 Protons."></a-sphere>
-      <!-- K Shell (2) -->
       <a-torus color="#7F8C8D" radius="0.6" radius-tubular="0.005" rotation="45 0 0" position="0 0.5 0"></a-torus>
       <a-entity rotation="45 0 0" position="0 0.5 0"><a-entity
           animation="property: rotation; to: 0 0 360; loop: true; dur: 2000; easing: linear"><a-sphere color="#00FFFF"
             radius="0.05" position="0.6 0 0"></a-sphere><a-sphere color="#00FFFF" radius="0.05"
             position="-0.6 0 0"></a-sphere></a-entity></a-entity>
-      <!-- L Shell (3) -->
       <a-torus color="#95A5A6" radius="1.1" radius-tubular="0.005" rotation="60 0 0" position="0 0.5 0"></a-torus>
       <a-entity rotation="60 0 0" position="0 0.5 0"><a-entity
           animation="property: rotation; to: 0 0 360; loop: true; dur: 4000; easing: linear">
@@ -159,13 +153,11 @@
     <a-marker type="barcode" value="6">
       <a-sphere color="#2ECC71" radius="0.4" position="0 0.5 0"
         info-click="title: Nucleus; desc: 6 Protons."></a-sphere>
-      <!-- K Shell (2) -->
       <a-torus color="#7F8C8D" radius="0.6" radius-tubular="0.005" rotation="45 0 0" position="0 0.5 0"></a-torus>
       <a-entity rotation="45 0 0" position="0 0.5 0"><a-entity
           animation="property: rotation; to: 0 0 360; loop: true; dur: 2000; easing: linear"><a-sphere color="#00FFFF"
             radius="0.05" position="0.6 0 0"></a-sphere><a-sphere color="#00FFFF" radius="0.05"
             position="-0.6 0 0"></a-sphere></a-entity></a-entity>
-      <!-- L Shell (4) -->
       <a-torus color="#95A5A6" radius="1.1" radius-tubular="0.005" rotation="60 0 0" position="0 0.5 0"></a-torus>
       <a-entity rotation="60 0 0" position="0 0.5 0"><a-entity
           animation="property: rotation; to: 0 0 360; loop: true; dur: 4000; easing: linear">
@@ -181,13 +173,11 @@
     <a-marker type="barcode" value="7">
       <a-sphere color="#2ECC71" radius="0.4" position="0 0.5 0"
         info-click="title: Nucleus; desc: 7 Protons."></a-sphere>
-      <!-- K Shell (2) -->
       <a-torus color="#7F8C8D" radius="0.6" radius-tubular="0.005" rotation="45 0 0" position="0 0.5 0"></a-torus>
       <a-entity rotation="45 0 0" position="0 0.5 0"><a-entity
           animation="property: rotation; to: 0 0 360; loop: true; dur: 2000; easing: linear"><a-sphere color="#00FFFF"
             radius="0.05" position="0.6 0 0"></a-sphere><a-sphere color="#00FFFF" radius="0.05"
             position="-0.6 0 0"></a-sphere></a-entity></a-entity>
-      <!-- L Shell (5) -->
       <a-torus color="#95A5A6" radius="1.1" radius-tubular="0.005" rotation="60 0 0" position="0 0.5 0"></a-torus>
       <a-entity rotation="60 0 0" position="0 0.5 0"><a-entity
           animation="property: rotation; to: 0 0 360; loop: true; dur: 4000; easing: linear">
@@ -195,7 +185,8 @@
           <a-sphere color="#00FFFF" radius="0.08" position="-1.1 0 0"></a-sphere>
           <a-sphere color="#00FFFF" radius="0.08" position="0 1.1 0"></a-sphere>
           <a-sphere color="#00FFFF" radius="0.08" position="0 -1.1 0"></a-sphere>
-          <a-sphere color="#00FFFF" radius="0.08" position="0.7 0.7 0"></a-sphere>
+          <!-- Fixed Diagonals: 1.1 * 0.707 = 0.778 -->
+          <a-sphere color="#00FFFF" radius="0.08" position="0.778 0.778 0"></a-sphere>
         </a-entity></a-entity>
       <a-text value="Nitrogen (N)" align="center" position="0 1.8 0" color="black" scale="2 2 2"></a-text>
     </a-marker>
@@ -204,13 +195,11 @@
     <a-marker type="barcode" value="8">
       <a-sphere color="#2ECC71" radius="0.45" position="0 0.5 0"
         info-click="title: Nucleus; desc: 8 Protons."></a-sphere>
-      <!-- K Shell (2) -->
       <a-torus color="#7F8C8D" radius="0.6" radius-tubular="0.005" rotation="45 0 0" position="0 0.5 0"></a-torus>
       <a-entity rotation="45 0 0" position="0 0.5 0"><a-entity
           animation="property: rotation; to: 0 0 360; loop: true; dur: 2000; easing: linear"><a-sphere color="#00FFFF"
             radius="0.05" position="0.6 0 0"></a-sphere><a-sphere color="#00FFFF" radius="0.05"
             position="-0.6 0 0"></a-sphere></a-entity></a-entity>
-      <!-- L Shell (6) -->
       <a-torus color="#95A5A6" radius="1.1" radius-tubular="0.005" rotation="60 0 0" position="0 0.5 0"></a-torus>
       <a-entity rotation="60 0 0" position="0 0.5 0"><a-entity
           animation="property: rotation; to: 0 0 360; loop: true; dur: 4000; easing: linear">
@@ -218,8 +207,8 @@
             position="-1.1 0 0"></a-sphere>
           <a-sphere color="#00FFFF" radius="0.08" position="0 1.1 0"></a-sphere><a-sphere color="#00FFFF" radius="0.08"
             position="0 -1.1 0"></a-sphere>
-          <a-sphere color="#00FFFF" radius="0.08" position="0.7 0.7 0"></a-sphere><a-sphere color="#00FFFF"
-            radius="0.08" position="-0.7 -0.7 0"></a-sphere>
+          <a-sphere color="#00FFFF" radius="0.08" position="0.778 0.778 0"></a-sphere><a-sphere color="#00FFFF"
+            radius="0.08" position="-0.778 -0.778 0"></a-sphere>
         </a-entity></a-entity>
       <a-text value="Oxygen (O)" align="center" position="0 1.8 0" color="black" scale="2 2 2"></a-text>
     </a-marker>
@@ -228,13 +217,11 @@
     <a-marker type="barcode" value="9">
       <a-sphere color="#2ECC71" radius="0.45" position="0 0.5 0"
         info-click="title: Nucleus; desc: 9 Protons."></a-sphere>
-      <!-- K Shell (2) -->
       <a-torus color="#7F8C8D" radius="0.6" radius-tubular="0.005" rotation="45 0 0" position="0 0.5 0"></a-torus>
       <a-entity rotation="45 0 0" position="0 0.5 0"><a-entity
           animation="property: rotation; to: 0 0 360; loop: true; dur: 2000; easing: linear"><a-sphere color="#00FFFF"
             radius="0.05" position="0.6 0 0"></a-sphere><a-sphere color="#00FFFF" radius="0.05"
             position="-0.6 0 0"></a-sphere></a-entity></a-entity>
-      <!-- L Shell (7) -->
       <a-torus color="#95A5A6" radius="1.1" radius-tubular="0.005" rotation="60 0 0" position="0 0.5 0"></a-torus>
       <a-entity rotation="60 0 0" position="0 0.5 0"><a-entity
           animation="property: rotation; to: 0 0 360; loop: true; dur: 4000; easing: linear">
@@ -242,9 +229,9 @@
             position="-1.1 0 0"></a-sphere>
           <a-sphere color="#00FFFF" radius="0.08" position="0 1.1 0"></a-sphere><a-sphere color="#00FFFF" radius="0.08"
             position="0 -1.1 0"></a-sphere>
-          <a-sphere color="#00FFFF" radius="0.08" position="0.7 0.7 0"></a-sphere><a-sphere color="#00FFFF"
-            radius="0.08" position="-0.7 -0.7 0"></a-sphere>
-          <a-sphere color="#00FFFF" radius="0.08" position="-0.7 0.7 0"></a-sphere>
+          <a-sphere color="#00FFFF" radius="0.08" position="0.778 0.778 0"></a-sphere><a-sphere color="#00FFFF"
+            radius="0.08" position="-0.778 -0.778 0"></a-sphere>
+          <a-sphere color="#00FFFF" radius="0.08" position="-0.778 0.778 0"></a-sphere>
         </a-entity></a-entity>
       <a-text value="Fluorine (F)" align="center" position="0 1.8 0" color="black" scale="2 2 2"></a-text>
     </a-marker>
@@ -253,13 +240,11 @@
     <a-marker type="barcode" value="10">
       <a-sphere color="#2ECC71" radius="0.5" position="0 0.5 0"
         info-click="title: Nucleus; desc: 10 Protons (Full Octet)."></a-sphere>
-      <!-- K Shell (2) -->
       <a-torus color="#7F8C8D" radius="0.6" radius-tubular="0.005" rotation="45 0 0" position="0 0.5 0"></a-torus>
       <a-entity rotation="45 0 0" position="0 0.5 0"><a-entity
           animation="property: rotation; to: 0 0 360; loop: true; dur: 2000; easing: linear"><a-sphere color="#00FFFF"
             radius="0.05" position="0.6 0 0"></a-sphere><a-sphere color="#00FFFF" radius="0.05"
             position="-0.6 0 0"></a-sphere></a-entity></a-entity>
-      <!-- L Shell (8) -->
       <a-torus color="#95A5A6" radius="1.1" radius-tubular="0.005" rotation="60 0 0" position="0 0.5 0"></a-torus>
       <a-entity rotation="60 0 0" position="0 0.5 0"><a-entity
           animation="property: rotation; to: 0 0 360; loop: true; dur: 4000; easing: linear">
@@ -267,14 +252,12 @@
             position="-1.1 0 0"></a-sphere>
           <a-sphere color="#00FFFF" radius="0.08" position="0 1.1 0"></a-sphere><a-sphere color="#00FFFF" radius="0.08"
             position="0 -1.1 0"></a-sphere>
-          <a-sphere color="#00FFFF" radius="0.08" position="0.7 0.7 0"></a-sphere><a-sphere color="#00FFFF"
-            radius="0.08" position="-0.7 -0.7 0"></a-sphere>
-          <a-sphere color="#00FFFF" radius="0.08" position="-0.7 0.7 0"></a-sphere><a-sphere color="#00FFFF"
-            radius="0.08" position="0.7 -0.7 0"></a-sphere>
+          <a-sphere color="#00FFFF" radius="0.08" position="0.778 0.778 0"></a-sphere><a-sphere color="#00FFFF"
+            radius="0.08" position="-0.778 -0.778 0"></a-sphere>
+          <a-sphere color="#00FFFF" radius="0.08" position="-0.778 0.778 0"></a-sphere><a-sphere color="#00FFFF"
+            radius="0.08" position="0.778 -0.778 0"></a-sphere>
         </a-entity></a-entity>
       <a-text value="Neon (Ne)" align="center" position="0 1.8 0" color="black" scale="2 2 2"></a-text>
-    </a-marker>
-
     </a-marker>
 
     <!-- ==========================================
@@ -285,13 +268,13 @@
     <a-marker type="barcode" value="11">
       <a-sphere color="#2ECC71" radius="0.5" position="0 0.5 0"
         info-click="title: Nucleus; desc: 11 Protons."></a-sphere>
-      <!-- K Shell (2) -->
+      <!-- K (2) -->
       <a-torus color="#7F8C8D" radius="0.6" radius-tubular="0.005" rotation="45 0 0" position="0 0.5 0"></a-torus>
       <a-entity rotation="45 0 0" position="0 0.5 0"><a-entity
           animation="property: rotation; to: 0 0 360; loop: true; dur: 2000; easing: linear"><a-sphere color="#00FFFF"
             radius="0.05" position="0.6 0 0"></a-sphere><a-sphere color="#00FFFF" radius="0.05"
             position="-0.6 0 0"></a-sphere></a-entity></a-entity>
-      <!-- L Shell (8) -->
+      <!-- L (8) -->
       <a-torus color="#95A5A6" radius="1.1" radius-tubular="0.005" rotation="60 0 0" position="0 0.5 0"></a-torus>
       <a-entity rotation="60 0 0" position="0 0.5 0"><a-entity
           animation="property: rotation; to: 0 0 360; loop: true; dur: 3000; easing: linear">
@@ -299,12 +282,12 @@
             position="-1.1 0 0"></a-sphere>
           <a-sphere color="#00FFFF" radius="0.06" position="0 1.1 0"></a-sphere><a-sphere color="#00FFFF" radius="0.06"
             position="0 -1.1 0"></a-sphere>
-          <a-sphere color="#00FFFF" radius="0.06" position="0.7 0.7 0"></a-sphere><a-sphere color="#00FFFF"
-            radius="0.06" position="-0.7 -0.7 0"></a-sphere>
-          <a-sphere color="#00FFFF" radius="0.06" position="-0.7 0.7 0"></a-sphere><a-sphere color="#00FFFF"
-            radius="0.06" position="0.7 -0.7 0"></a-sphere>
+          <a-sphere color="#00FFFF" radius="0.06" position="0.778 0.778 0"></a-sphere><a-sphere color="#00FFFF"
+            radius="0.06" position="-0.778 -0.778 0"></a-sphere>
+          <a-sphere color="#00FFFF" radius="0.06" position="-0.778 0.778 0"></a-sphere><a-sphere color="#00FFFF"
+            radius="0.06" position="0.778 -0.778 0"></a-sphere>
         </a-entity></a-entity>
-      <!-- M Shell (1) -->
+      <!-- M (1) -->
       <a-torus color="#BDC3C7" radius="1.6" radius-tubular="0.005" rotation="75 0 0" position="0 0.5 0"></a-torus>
       <a-entity rotation="75 0 0" position="0 0.5 0"><a-entity
           animation="property: rotation; to: 0 0 360; loop: true; dur: 5000; easing: linear"><a-sphere color="#00FFFF"
@@ -313,63 +296,54 @@
       <a-text value="Sodium (Na)" align="center" position="0 2.2 0" color="black" scale="2 2 2"></a-text>
     </a-marker>
 
-    <!-- 12: MAGNESIUM (2, 8, 2) -->
+    <!-- 12-18 (Similar Updates to L and M shells) -->
+    <!-- 12: MAGNESIUM -->
     <a-marker type="barcode" value="12">
-      <a-sphere color="#2ECC71" radius="0.55" position="0 0.5 0"
-        info-click="title: Nucleus; desc: 12 Protons."></a-sphere>
+      <a-sphere color="#2ECC71" radius="0.55" position="0 0.5 0"></a-sphere>
       <a-torus color="#7F8C8D" radius="0.6" radius-tubular="0.005" rotation="45 0 0" position="0 0.5 0"></a-torus>
       <a-torus color="#95A5A6" radius="1.1" radius-tubular="0.005" rotation="60 0 0" position="0 0.5 0"></a-torus>
-      <!-- M Shell (2) -->
       <a-torus color="#BDC3C7" radius="1.6" radius-tubular="0.005" rotation="75 0 0" position="0 0.5 0"></a-torus>
       <a-entity rotation="75 0 0" position="0 0.5 0"><a-entity
-          animation="property: rotation; to: 0 0 360; loop: true; dur: 5000; easing: linear">
-          <a-sphere color="#00FFFF" radius="0.08" position="1.6 0 0"></a-sphere><a-sphere color="#00FFFF" radius="0.08"
-            position="-1.6 0 0"></a-sphere>
-        </a-entity></a-entity>
+          animation="property: rotation; to: 0 0 360; loop: true; dur: 5000; easing: linear"><a-sphere color="#00FFFF"
+            radius="0.08" position="1.6 0 0"></a-sphere><a-sphere color="#00FFFF" radius="0.08"
+            position="-1.6 0 0"></a-sphere></a-entity></a-entity>
       <a-text value="Magnesium (Mg)" align="center" position="0 2.2 0" color="black" scale="2 2 2"></a-text>
     </a-marker>
 
-    <!-- 13: ALUMINUM (2, 8, 3) -->
+    <!-- 13: ALUMINUM -->
     <a-marker type="barcode" value="13">
-      <a-sphere color="#2ECC71" radius="0.55" position="0 0.5 0"
-        info-click="title: Nucleus; desc: 13 Protons."></a-sphere>
+      <a-sphere color="#2ECC71" radius="0.55" position="0 0.5 0"></a-sphere>
       <a-torus color="#7F8C8D" radius="0.6" radius-tubular="0.005" rotation="45 0 0" position="0 0.5 0"></a-torus>
       <a-torus color="#95A5A6" radius="1.1" radius-tubular="0.005" rotation="60 0 0" position="0 0.5 0"></a-torus>
-      <!-- M Shell (3) -->
       <a-torus color="#BDC3C7" radius="1.6" radius-tubular="0.005" rotation="75 0 0" position="0 0.5 0"></a-torus>
       <a-entity rotation="75 0 0" position="0 0.5 0"><a-entity
-          animation="property: rotation; to: 0 0 360; loop: true; dur: 5000; easing: linear">
-          <a-sphere color="#00FFFF" radius="0.08" position="1.6 0 0"></a-sphere><a-sphere color="#00FFFF" radius="0.08"
-            position="-1.6 0 0"></a-sphere><a-sphere color="#00FFFF" radius="0.08" position="0 1.6 0"></a-sphere>
-        </a-entity></a-entity>
+          animation="property: rotation; to: 0 0 360; loop: true; dur: 5000; easing: linear"><a-sphere color="#00FFFF"
+            radius="0.08" position="1.6 0 0"></a-sphere><a-sphere color="#00FFFF" radius="0.08"
+            position="-1.6 0 0"></a-sphere><a-sphere color="#00FFFF" radius="0.08"
+            position="0 1.6 0"></a-sphere></a-entity></a-entity>
       <a-text value="Aluminum (Al)" align="center" position="0 2.2 0" color="black" scale="2 2 2"></a-text>
     </a-marker>
 
-    <!-- 14: SILICON (2, 8, 4) -->
+    <!-- 14: SILICON -->
     <a-marker type="barcode" value="14">
-      <a-sphere color="#2ECC71" radius="0.6" position="0 0.5 0"
-        info-click="title: Nucleus; desc: 14 Protons."></a-sphere>
+      <a-sphere color="#2ECC71" radius="0.6" position="0 0.5 0"></a-sphere>
       <a-torus color="#7F8C8D" radius="0.6" radius-tubular="0.005" rotation="45 0 0" position="0 0.5 0"></a-torus>
       <a-torus color="#95A5A6" radius="1.1" radius-tubular="0.005" rotation="60 0 0" position="0 0.5 0"></a-torus>
-      <!-- M Shell (4) -->
       <a-torus color="#BDC3C7" radius="1.6" radius-tubular="0.005" rotation="75 0 0" position="0 0.5 0"></a-torus>
       <a-entity rotation="75 0 0" position="0 0.5 0"><a-entity
-          animation="property: rotation; to: 0 0 360; loop: true; dur: 5000; easing: linear">
-          <a-sphere color="#00FFFF" radius="0.08" position="1.6 0 0"></a-sphere><a-sphere color="#00FFFF" radius="0.08"
-            position="-1.6 0 0"></a-sphere>
-          <a-sphere color="#00FFFF" radius="0.08" position="0 1.6 0"></a-sphere><a-sphere color="#00FFFF" radius="0.08"
-            position="0 -1.6 0"></a-sphere>
-        </a-entity></a-entity>
+          animation="property: rotation; to: 0 0 360; loop: true; dur: 5000; easing: linear"><a-sphere color="#00FFFF"
+            radius="0.08" position="1.6 0 0"></a-sphere><a-sphere color="#00FFFF" radius="0.08"
+            position="-1.6 0 0"></a-sphere><a-sphere color="#00FFFF" radius="0.08"
+            position="0 1.6 0"></a-sphere><a-sphere color="#00FFFF" radius="0.08"
+            position="0 -1.6 0"></a-sphere></a-entity></a-entity>
       <a-text value="Silicon (Si)" align="center" position="0 2.2 0" color="black" scale="2 2 2"></a-text>
     </a-marker>
 
-    <!-- 15: PHOSPHORUS (2, 8, 5) -->
+    <!-- 15: PHOSPHORUS (M-Shell Diagonals: 1.6 * 0.707 = 1.13) -->
     <a-marker type="barcode" value="15">
-      <a-sphere color="#2ECC71" radius="0.6" position="0 0.5 0"
-        info-click="title: Nucleus; desc: 15 Protons."></a-sphere>
+      <a-sphere color="#2ECC71" radius="0.6" position="0 0.5 0"></a-sphere>
       <a-torus color="#7F8C8D" radius="0.6" radius-tubular="0.005" rotation="45 0 0" position="0 0.5 0"></a-torus>
       <a-torus color="#95A5A6" radius="1.1" radius-tubular="0.005" rotation="60 0 0" position="0 0.5 0"></a-torus>
-      <!-- M Shell (5) -->
       <a-torus color="#BDC3C7" radius="1.6" radius-tubular="0.005" rotation="75 0 0" position="0 0.5 0"></a-torus>
       <a-entity rotation="75 0 0" position="0 0.5 0"><a-entity
           animation="property: rotation; to: 0 0 360; loop: true; dur: 5000; easing: linear">
@@ -377,18 +351,16 @@
             position="-1.6 0 0"></a-sphere>
           <a-sphere color="#00FFFF" radius="0.08" position="0 1.6 0"></a-sphere><a-sphere color="#00FFFF" radius="0.08"
             position="0 -1.6 0"></a-sphere>
-          <a-sphere color="#00FFFF" radius="0.08" position="1.1 1.1 0"></a-sphere>
+          <a-sphere color="#00FFFF" radius="0.08" position="1.13 1.13 0"></a-sphere>
         </a-entity></a-entity>
       <a-text value="Phosphorus (P)" align="center" position="0 2.2 0" color="black" scale="2 2 2"></a-text>
     </a-marker>
 
-    <!-- 16: SULFUR (2, 8, 6) -->
+    <!-- 16: SULFUR -->
     <a-marker type="barcode" value="16">
-      <a-sphere color="#2ECC71" radius="0.65" position="0 0.5 0"
-        info-click="title: Nucleus; desc: 16 Protons."></a-sphere>
+      <a-sphere color="#2ECC71" radius="0.65" position="0 0.5 0"></a-sphere>
       <a-torus color="#7F8C8D" radius="0.6" radius-tubular="0.005" rotation="45 0 0" position="0 0.5 0"></a-torus>
       <a-torus color="#95A5A6" radius="1.1" radius-tubular="0.005" rotation="60 0 0" position="0 0.5 0"></a-torus>
-      <!-- M Shell (6) -->
       <a-torus color="#BDC3C7" radius="1.6" radius-tubular="0.005" rotation="75 0 0" position="0 0.5 0"></a-torus>
       <a-entity rotation="75 0 0" position="0 0.5 0"><a-entity
           animation="property: rotation; to: 0 0 360; loop: true; dur: 5000; easing: linear">
@@ -396,19 +368,17 @@
             position="-1.6 0 0"></a-sphere>
           <a-sphere color="#00FFFF" radius="0.08" position="0 1.6 0"></a-sphere><a-sphere color="#00FFFF" radius="0.08"
             position="0 -1.6 0"></a-sphere>
-          <a-sphere color="#00FFFF" radius="0.08" position="1.1 1.1 0"></a-sphere><a-sphere color="#00FFFF"
-            radius="0.08" position="-1.1 -1.1 0"></a-sphere>
+          <a-sphere color="#00FFFF" radius="0.08" position="1.13 1.13 0"></a-sphere><a-sphere color="#00FFFF"
+            radius="0.08" position="-1.13 -1.13 0"></a-sphere>
         </a-entity></a-entity>
       <a-text value="Sulfur (S)" align="center" position="0 2.2 0" color="black" scale="2 2 2"></a-text>
     </a-marker>
 
-    <!-- 17: CHLORINE (2, 8, 7) -->
+    <!-- 17: CHLORINE -->
     <a-marker type="barcode" value="17">
-      <a-sphere color="#2ECC71" radius="0.65" position="0 0.5 0"
-        info-click="title: Nucleus; desc: 17 Protons."></a-sphere>
+      <a-sphere color="#2ECC71" radius="0.65" position="0 0.5 0"></a-sphere>
       <a-torus color="#7F8C8D" radius="0.6" radius-tubular="0.005" rotation="45 0 0" position="0 0.5 0"></a-torus>
       <a-torus color="#95A5A6" radius="1.1" radius-tubular="0.005" rotation="60 0 0" position="0 0.5 0"></a-torus>
-      <!-- M Shell (7) -->
       <a-torus color="#BDC3C7" radius="1.6" radius-tubular="0.005" rotation="75 0 0" position="0 0.5 0"></a-torus>
       <a-entity rotation="75 0 0" position="0 0.5 0"><a-entity
           animation="property: rotation; to: 0 0 360; loop: true; dur: 5000; easing: linear">
@@ -416,20 +386,18 @@
             position="-1.6 0 0"></a-sphere>
           <a-sphere color="#00FFFF" radius="0.08" position="0 1.6 0"></a-sphere><a-sphere color="#00FFFF" radius="0.08"
             position="0 -1.6 0"></a-sphere>
-          <a-sphere color="#00FFFF" radius="0.08" position="1.1 1.1 0"></a-sphere><a-sphere color="#00FFFF"
-            radius="0.08" position="-1.1 -1.1 0"></a-sphere>
-          <a-sphere color="#00FFFF" radius="0.08" position="-1.1 1.1 0"></a-sphere>
+          <a-sphere color="#00FFFF" radius="0.08" position="1.13 1.13 0"></a-sphere><a-sphere color="#00FFFF"
+            radius="0.08" position="-1.13 -1.13 0"></a-sphere>
+          <a-sphere color="#00FFFF" radius="0.08" position="-1.13 1.13 0"></a-sphere>
         </a-entity></a-entity>
       <a-text value="Chlorine (Cl)" align="center" position="0 2.2 0" color="black" scale="2 2 2"></a-text>
     </a-marker>
 
-    <!-- 18: ARGON (2, 8, 8) -->
+    <!-- 18: ARGON -->
     <a-marker type="barcode" value="18">
-      <a-sphere color="#2ECC71" radius="0.7" position="0 0.5 0"
-        info-click="title: Nucleus; desc: 18 Protons (Full Octet)."></a-sphere>
+      <a-sphere color="#2ECC71" radius="0.7" position="0 0.5 0"></a-sphere>
       <a-torus color="#7F8C8D" radius="0.6" radius-tubular="0.005" rotation="45 0 0" position="0 0.5 0"></a-torus>
       <a-torus color="#95A5A6" radius="1.1" radius-tubular="0.005" rotation="60 0 0" position="0 0.5 0"></a-torus>
-      <!-- M Shell (8) -->
       <a-torus color="#BDC3C7" radius="1.6" radius-tubular="0.005" rotation="75 0 0" position="0 0.5 0"></a-torus>
       <a-entity rotation="75 0 0" position="0 0.5 0"><a-entity
           animation="property: rotation; to: 0 0 360; loop: true; dur: 5000; easing: linear">
@@ -437,26 +405,21 @@
             position="-1.6 0 0"></a-sphere>
           <a-sphere color="#00FFFF" radius="0.08" position="0 1.6 0"></a-sphere><a-sphere color="#00FFFF" radius="0.08"
             position="0 -1.6 0"></a-sphere>
-          <a-sphere color="#00FFFF" radius="0.08" position="1.1 1.1 0"></a-sphere><a-sphere color="#00FFFF"
-            radius="0.08" position="-1.1 -1.1 0"></a-sphere>
-          <a-sphere color="#00FFFF" radius="0.08" position="-1.1 1.1 0"></a-sphere><a-sphere color="#00FFFF"
-            radius="0.08" position="1.1 -1.1 0"></a-sphere>
+          <a-sphere color="#00FFFF" radius="0.08" position="1.13 1.13 0"></a-sphere><a-sphere color="#00FFFF"
+            radius="0.08" position="-1.13 -1.13 0"></a-sphere>
+          <a-sphere color="#00FFFF" radius="0.08" position="-1.13 1.13 0"></a-sphere><a-sphere color="#00FFFF"
+            radius="0.08" position="1.13 -1.13 0"></a-sphere>
         </a-entity></a-entity>
       <a-text value="Argon (Ar)" align="center" position="0 2.2 0" color="black" scale="2 2 2"></a-text>
     </a-marker>
 
-    <!-- ==========================================
-         PERIOD 4
-         ========================================== -->
-
-    <!-- 19: POTASSIUM (2, 8, 8, 1) -->
+    <!-- 19-20 (Basic shells, no diagonals needed) -->
+    <!-- 19: POTASSIUM -->
     <a-marker type="barcode" value="19">
-      <a-sphere color="#2ECC71" radius="0.75" position="0 0.5 0"
-        info-click="title: Nucleus; desc: 19 Protons."></a-sphere>
+      <a-sphere color="#2ECC71" radius="0.75" position="0 0.5 0"></a-sphere>
       <a-torus color="#7F8C8D" radius="0.6" radius-tubular="0.005" rotation="45 0 0" position="0 0.5 0"></a-torus>
       <a-torus color="#95A5A6" radius="1.1" radius-tubular="0.005" rotation="60 0 0" position="0 0.5 0"></a-torus>
       <a-torus color="#BDC3C7" radius="1.6" radius-tubular="0.005" rotation="75 0 0" position="0 0.5 0"></a-torus>
-      <!-- N Shell (1) -->
       <a-torus color="#ECF0F1" radius="2.1" radius-tubular="0.005" rotation="90 0 0" position="0 0.5 0"></a-torus>
       <a-entity rotation="90 0 0" position="0 0.5 0"><a-entity
           animation="property: rotation; to: 0 0 360; loop: true; dur: 6000; easing: linear">
@@ -466,14 +429,12 @@
       <a-text value="Potassium (K)" align="center" position="0 2.6 0" color="black" scale="2 2 2"></a-text>
     </a-marker>
 
-    <!-- 20: CALCIUM (2, 8, 8, 2) -->
+    <!-- 20: CALCIUM -->
     <a-marker type="barcode" value="20">
-      <a-sphere color="#2ECC71" radius="0.8" position="0 0.5 0"
-        info-click="title: Nucleus; desc: 20 Protons."></a-sphere>
+      <a-sphere color="#2ECC71" radius="0.8" position="0 0.5 0"></a-sphere>
       <a-torus color="#7F8C8D" radius="0.6" radius-tubular="0.005" rotation="45 0 0" position="0 0.5 0"></a-torus>
       <a-torus color="#95A5A6" radius="1.1" radius-tubular="0.005" rotation="60 0 0" position="0 0.5 0"></a-torus>
       <a-torus color="#BDC3C7" radius="1.6" radius-tubular="0.005" rotation="75 0 0" position="0 0.5 0"></a-torus>
-      <!-- N Shell (2) -->
       <a-torus color="#ECF0F1" radius="2.1" radius-tubular="0.005" rotation="90 0 0" position="0 0.5 0"></a-torus>
       <a-entity rotation="90 0 0" position="0 0.5 0"><a-entity
           animation="property: rotation; to: 0 0 360; loop: true; dur: 6000; easing: linear">
