@@ -38,12 +38,15 @@
       <!-- Nucleus: Single Proton (Green) -->
       <a-sphere color="#2ECC71" radius="0.2" position="0 0.5 0"></a-sphere>
 
+      <!-- Orbit Path (Static Ring) -->
+      <a-torus color="#7F8C8D" radius="0.6" radius-tubular="0.005" rotation="90 0 0" position="0 0.5 0"></a-torus>
+
       <!-- Electron Orbit Group 
            The entire entity rotates, carrying the child electron sphere with it.
       -->
       <a-entity position="0 0.5 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 3000; easing: linear">
-        <!-- Electron (Blueish-White) pushed out x=0.6 from center -->
-        <a-sphere color="#AED6F1" radius="0.08" position="0.6 0 0"></a-sphere>
+        <!-- Electron (Electricity Blue) pushed out x=0.6 from center -->
+        <a-sphere color="#00FFFF" radius="0.08" position="0.6 0 0"></a-sphere>
       </a-entity>
 
       <!-- Label -->
