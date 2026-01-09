@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Inorganic Chemistry AR - Hydrogen</title>
+  <title>Inorganic Chemistry AR - Elements</title>
   <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.4.5/aframe/build/aframe-ar.js"></script>
 
@@ -12,7 +12,7 @@
     AFRAME.registerComponent('scene-logger', {
       init: function () {
         const log = document.createElement('div');
-        log.innerText = 'System Ready: Scan Barcode 1 (Hydrogen)';
+        log.innerText = 'System Ready: Scan Barcodes (1=H, 2=He)';
         log.style.cssText = 'position:fixed; top:10px; left:10px; color:lime; background:rgba(0,0,0,0.5); padding:5px; z-index:999; font-family:sans-serif;';
         document.body.appendChild(log);
       }
@@ -29,49 +29,50 @@
   <a-scene embedded scene-logger vr-mode-ui="enabled: false" renderer="logarithmicDepthBuffer: true; precision: medium;"
     arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3; sourceWidth: 640; sourceHeight: 480; displayWidth: 640; displayHeight: 480;">
 
-    <!-- 
-      BARCODE MARKER 1: HYDROGEN (Protium)
-      1 Proton (Green), 0 Neutrons, 1 Electron (Blueish-White)
-    -->
+    <!-- BARCODE 1: HYDROGEN (Protium) -->
     <a-marker type="barcode" value="1">
-
       <!-- Nucleus: Single Proton (Green) -->
       <a-sphere color="#2ECC71" radius="0.2" position="0 0.5 0"></a-sphere>
 
-      <!-- Orbit Path (Static Ring) - Tilted 45 degrees
-           Original (Flat): rotation="90 0 0"
-           Tilted: We adjust X rotation. 
-           NOTE: <a-torus> default is upright (donut standing up). 
-           "90 0 0" made it flat. 
-           "45 0 0" or "135 0 0" will tilt it.
-      -->
+      <!-- 1s Orbital (Single Ring) -->
       <a-torus color="#7F8C8D" radius="0.6" radius-tubular="0.005" rotation="45 0 0" position="0 0.5 0"></a-torus>
 
-      <!-- Electron Orbit Group 
-           We rotate the entire group 45 degrees to match the ring.
-           Then we animate the "rotation" property (which functions as local rotation).
-           However, standard animation overwrites the 'rotation' attribute. 
-           
-           SOLUTION: Wrap the animation in a TILTED container.
-      -->
+      <!-- Electron Container (Tilted 45) -->
       <a-entity rotation="45 0 0" position="0 0.5 0">
         <a-entity animation="property: rotation; to: 0 0 360; loop: true; dur: 3000; easing: linear">
-          <!-- Electron (Electricity Blue) -->
-          <!-- 
-                Note: Since the torus is upright-ish, '0 0 360' (Z-axis rotation) 
-                is likely what we want for the electron to follow the ring.
-                Let's verify orientation: 
-                Torus at 45deg X = Donut leaning back.
-                Electron container at 45deg X.
-                Electron needs to rotate around the Z axis (the hole of the donut).
-            -->
+          <!-- 1 Electron (Electricity Blue) -->
           <a-sphere color="#00FFFF" radius="0.08" position="0.6 0 0"></a-sphere>
         </a-entity>
       </a-entity>
-
-      <!-- Label -->
       <a-text value="Hydrogen (H)" align="center" position="0 1.2 0" color="black" scale="2 2 2"></a-text>
+    </a-marker>
 
+    <!-- BARCODE 2: HELIUM (He)
+         Nucleus: 2P + 2N
+         Orbit: Shared 1s orbital (2 electrons)
+    -->
+    <a-marker type="barcode" value="2">
+      <!-- Nucleus (Cluster) -->
+      <a-entity position="0 0.5 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear">
+        <a-sphere color="#2ECC71" radius="0.15" position="-0.1 0.05 -0.05"></a-sphere> <!-- P -->
+        <a-sphere color="#2ECC71" radius="0.15" position="0.1 -0.05 0.05"></a-sphere> <!-- P -->
+        <a-sphere color="#E74C3C" radius="0.15" position="-0.05 -0.05 0.1"></a-sphere> <!-- N -->
+        <a-sphere color="#E74C3C" radius="0.15" position="0.05 0.05 -0.1"></a-sphere> <!-- N -->
+      </a-entity>
+
+      <!-- 1s Orbital (Shared Ring) -->
+      <a-torus color="#7F8C8D" radius="0.7" radius-tubular="0.005" rotation="45 0 0" position="0 0.5 0"></a-torus>
+
+      <!-- Electron Container (Tilted 45) -->
+      <a-entity rotation="45 0 0" position="0 0.5 0">
+        <a-entity animation="property: rotation; to: 0 0 360; loop: true; dur: 3000; easing: linear">
+          <!-- Electron 1 -->
+          <a-sphere color="#00FFFF" radius="0.08" position="0.7 0 0"></a-sphere>
+          <!-- Electron 2 (Opposite) -->
+          <a-sphere color="#00FFFF" radius="0.08" position="-0.7 0 0"></a-sphere>
+        </a-entity>
+      </a-entity>
+      <a-text value="Helium (He)" align="center" position="0 1.5 0" color="black" scale="2 2 2"></a-text>
     </a-marker>
 
     <!-- AR Camera -->
