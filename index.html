@@ -99,6 +99,17 @@
 
     <a-entity camera></a-entity>
   </a-scene>
+
+  <script>
+    // Fix for AR.js mobile resize issue
+    window.addEventListener('load', function () {
+      setTimeout(function () {
+        window.dispatchEvent(new Event('resize'));
+        const debugConsole = document.getElementById('debug-console');
+        if (debugConsole) debugConsole.innerHTML += '<div style="color: yellow">Forced Resize</div>';
+      }, 1000);
+    });
+  </script>
 </body>
 
 </html>
