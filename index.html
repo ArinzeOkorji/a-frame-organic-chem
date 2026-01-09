@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Inorganic Chemistry AR - Methane</title>
-  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.4.5/aframe/build/aframe-ar.js"></script>
 
   <script>
@@ -27,6 +27,14 @@
         this.el.addEventListener('markerLost', () => {
           if (debugConsole) debugConsole.innerHTML += '<div style="color: red">Lost ' + (this.el.id || 'marker') + '</div>';
         });
+      }
+    });
+  </script>
+  <script>
+    AFRAME.registerComponent('scene-logger', {
+      init: function () {
+        const debugConsole = document.getElementById('debug-console');
+        if (debugConsole) debugConsole.innerHTML += '<div style="color: cyan">Scene Loaded (A-Frame 1.2.0)</div>';
       }
     });
   </script>
