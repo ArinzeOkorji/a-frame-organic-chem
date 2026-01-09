@@ -38,15 +38,35 @@
       <!-- Nucleus: Single Proton (Green) -->
       <a-sphere color="#2ECC71" radius="0.2" position="0 0.5 0"></a-sphere>
 
-      <!-- Orbit Path (Static Ring) -->
-      <a-torus color="#7F8C8D" radius="0.6" radius-tubular="0.005" rotation="90 0 0" position="0 0.5 0"></a-torus>
+      <!-- Orbit Path (Static Ring) - Tilted 45 degrees
+           Original (Flat): rotation="90 0 0"
+           Tilted: We adjust X rotation. 
+           NOTE: <a-torus> default is upright (donut standing up). 
+           "90 0 0" made it flat. 
+           "45 0 0" or "135 0 0" will tilt it.
+      -->
+      <a-torus color="#7F8C8D" radius="0.6" radius-tubular="0.005" rotation="45 0 0" position="0 0.5 0"></a-torus>
 
       <!-- Electron Orbit Group 
-           The entire entity rotates, carrying the child electron sphere with it.
+           We rotate the entire group 45 degrees to match the ring.
+           Then we animate the "rotation" property (which functions as local rotation).
+           However, standard animation overwrites the 'rotation' attribute. 
+           
+           SOLUTION: Wrap the animation in a TILTED container.
       -->
-      <a-entity position="0 0.5 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 3000; easing: linear">
-        <!-- Electron (Electricity Blue) pushed out x=0.6 from center -->
-        <a-sphere color="#00FFFF" radius="0.08" position="0.6 0 0"></a-sphere>
+      <a-entity rotation="45 0 0" position="0 0.5 0">
+        <a-entity animation="property: rotation; to: 0 0 360; loop: true; dur: 3000; easing: linear">
+          <!-- Electron (Electricity Blue) -->
+          <!-- 
+                Note: Since the torus is upright-ish, '0 0 360' (Z-axis rotation) 
+                is likely what we want for the electron to follow the ring.
+                Let's verify orientation: 
+                Torus at 45deg X = Donut leaning back.
+                Electron container at 45deg X.
+                Electron needs to rotate around the Z axis (the hole of the donut).
+            -->
+          <a-sphere color="#00FFFF" radius="0.08" position="0.6 0 0"></a-sphere>
+        </a-entity>
       </a-entity>
 
       <!-- Label -->
