@@ -4,16 +4,42 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Inorganic Chemistry AR - Elements</title>
+  <title>Inorganic Chemistry AR - Interactive</title>
   <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.4.5/aframe/build/aframe-ar.js"></script>
 
   <script>
+    // Interaction Component
+    AFRAME.registerComponent('info-click', {
+      schema: {
+        title: { type: 'string', default: 'Info' },
+        desc: { type: 'string', default: 'No description available.' }
+      },
+      init: function () {
+        this.el.classList.add('clickable'); // Mark as interactable for raycaster
+
+        this.el.addEventListener('click', (evt) => {
+          // Prevent click from passing through to other objects if needed
+          // evt.stopPropagation(); 
+
+          const popup = document.getElementById('info-popup');
+          const title = document.getElementById('info-title');
+          const desc = document.getElementById('info-desc');
+
+          if (popup && title && desc) {
+            title.innerText = this.data.title;
+            desc.innerText = this.data.desc;
+            popup.style.display = 'block';
+          }
+        });
+      }
+    });
+
     AFRAME.registerComponent('scene-logger', {
       init: function () {
         const log = document.createElement('div');
-        log.innerText = 'System Ready: Scan Barcodes (1=H, 2=He)';
-        log.style.cssText = 'position:fixed; top:10px; left:10px; color:lime; background:rgba(0,0,0,0.5); padding:5px; z-index:999; font-family:sans-serif;';
+        log.innerText = 'System Ready: Tap objects for info';
+        log.style.cssText = 'position:fixed; top:10px; left:10px; color:lime; background:rgba(0,0,0,0.5); padding:5px; z-index:999; font-family:sans-serif; pointer-events:none;';
         document.body.appendChild(log);
       }
     });
@@ -21,55 +47,79 @@
 </head>
 
 <body style="margin: 0; overflow: hidden;">
+
+  <!-- Info Popup Overlay -->
+  <div id="info-popup"
+    style="display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 80%; max-width: 400px; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 9999; font-family: sans-serif; text-align: center;">
+    <button onclick="document.getElementById('info-popup').style.display='none'"
+      style="position: absolute; top: 10px; right: 15px; border: none; background: none; font-size: 24px; cursor: pointer; color: #555;">&times;</button>
+    <h3 id="info-title" style="margin: 0 0 10px 0; color: #333;">Title</h3>
+    <p id="info-desc" style="margin: 0; color: #666; font-size: 14px; line-height: 1.5;">Description goes here.</p>
+  </div>
+
   <!-- 
       AR.js Scene
-      - detectionMode: mono_and_matrix: Enables both pattern and barcode detection
-      - matrixCodeType: 3x3: Defines the barcode type (values 0-63)
+      - cursor="rayOrigin: mouse": Enables clicking on 3D objects via touch/mouse
+      - raycaster="objects: .clickable": Only interact with objects having the 'clickable' class
     -->
-  <a-scene embedded scene-logger vr-mode-ui="enabled: false" renderer="logarithmicDepthBuffer: true; precision: medium;"
+  <a-scene embedded scene-logger cursor="rayOrigin: mouse" raycaster="objects: .clickable" vr-mode-ui="enabled: false"
+    renderer="logarithmicDepthBuffer: true; precision: medium;"
     arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3; sourceWidth: 640; sourceHeight: 480; displayWidth: 640; displayHeight: 480;">
 
     <!-- BARCODE 1: HYDROGEN (Protium) -->
     <a-marker type="barcode" value="1">
       <!-- Nucleus: Single Proton (Green) -->
-      <a-sphere color="#2ECC71" radius="0.2" position="0 0.5 0"></a-sphere>
+      <a-sphere color="#2ECC71" radius="0.2" position="0 0.5 0"
+        info-click="title: Proton; desc: A positively charged subatomic particle found in the nucleus.">
+      </a-sphere>
 
       <!-- 1s Orbital (Single Ring) -->
-      <a-torus color="#7F8C8D" radius="0.6" radius-tubular="0.005" rotation="45 0 0" position="0 0.5 0"></a-torus>
+      <a-torus color="#7F8C8D" radius="0.6" radius-tubular="0.005" rotation="45 0 0" position="0 0.5 0"
+        info-click="title: 1s Orbital; desc: The spherical s-orbital closest to the nucleus. It can hold up to 2 electrons.">
+      </a-torus>
 
       <!-- Electron Container (Tilted 45) -->
       <a-entity rotation="45 0 0" position="0 0.5 0">
         <a-entity animation="property: rotation; to: 0 0 360; loop: true; dur: 3000; easing: linear">
           <!-- 1 Electron (Electricity Blue) -->
-          <a-sphere color="#00FFFF" radius="0.08" position="0.6 0 0"></a-sphere>
+          <a-sphere color="#00FFFF" radius="0.08" position="0.6 0 0"
+            info-click="title: Electron; desc: A negatively charged subatomic particle orbiting the nucleus.">
+          </a-sphere>
         </a-entity>
       </a-entity>
       <a-text value="Hydrogen (H)" align="center" position="0 1.2 0" color="black" scale="2 2 2"></a-text>
     </a-marker>
 
-    <!-- BARCODE 2: HELIUM (He)
-         Nucleus: 2P + 2N
-         Orbit: Shared 1s orbital (2 electrons)
-    -->
+    <!-- BARCODE 2: HELIUM (He) -->
     <a-marker type="barcode" value="2">
       <!-- Nucleus (Cluster) -->
       <a-entity position="0 0.5 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear">
-        <a-sphere color="#2ECC71" radius="0.15" position="-0.1 0.05 -0.05"></a-sphere> <!-- P -->
-        <a-sphere color="#2ECC71" radius="0.15" position="0.1 -0.05 0.05"></a-sphere> <!-- P -->
-        <a-sphere color="#E74C3C" radius="0.15" position="-0.05 -0.05 0.1"></a-sphere> <!-- N -->
-        <a-sphere color="#E74C3C" radius="0.15" position="0.05 0.05 -0.1"></a-sphere> <!-- N -->
+        <!-- Protons -->
+        <a-sphere color="#2ECC71" radius="0.15" position="-0.1 0.05 -0.05"
+          info-click="title: Proton; desc: Positively charged. Helium has 2 protons."></a-sphere>
+        <a-sphere color="#2ECC71" radius="0.15" position="0.1 -0.05 0.05"
+          info-click="title: Proton; desc: Positively charged. Helium has 2 protons."></a-sphere>
+        <!-- Neutrons -->
+        <a-sphere color="#E74C3C" radius="0.15" position="-0.05 -0.05 0.1"
+          info-click="title: Neutron; desc: Neutral particle. Helium has 2 neutrons to stabilize the nucleus."></a-sphere>
+        <a-sphere color="#E74C3C" radius="0.15" position="0.05 0.05 -0.1"
+          info-click="title: Neutron; desc: Neutral particle. Helium has 2 neutrons to stabilize the nucleus."></a-sphere>
       </a-entity>
 
       <!-- 1s Orbital (Shared Ring) -->
-      <a-torus color="#7F8C8D" radius="0.7" radius-tubular="0.005" rotation="45 0 0" position="0 0.5 0"></a-torus>
+      <a-torus color="#7F8C8D" radius="0.7" radius-tubular="0.005" rotation="45 0 0" position="0 0.5 0"
+        info-click="title: 1s Orbital; desc: Determine the probability of finding an electron in a specific region around an atom's nucleus.">
+      </a-torus>
 
       <!-- Electron Container (Tilted 45) -->
       <a-entity rotation="45 0 0" position="0 0.5 0">
         <a-entity animation="property: rotation; to: 0 0 360; loop: true; dur: 3000; easing: linear">
           <!-- Electron 1 -->
-          <a-sphere color="#00FFFF" radius="0.08" position="0.7 0 0"></a-sphere>
-          <!-- Electron 2 (Opposite) -->
-          <a-sphere color="#00FFFF" radius="0.08" position="-0.7 0 0"></a-sphere>
+          <a-sphere color="#00FFFF" radius="0.08" position="0.7 0 0"
+            info-click="title: Electron; desc: A negatively charged particle."></a-sphere>
+          <!-- Electron 2 -->
+          <a-sphere color="#00FFFF" radius="0.08" position="-0.7 0 0"
+            info-click="title: Electron; desc: A negatively charged particle."></a-sphere>
         </a-entity>
       </a-entity>
       <a-text value="Helium (He)" align="center" position="0 1.5 0" color="black" scale="2 2 2"></a-text>
