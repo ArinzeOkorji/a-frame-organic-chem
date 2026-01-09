@@ -9,6 +9,15 @@
   <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.4.5/aframe/build/aframe-ar.js"></script>
 
   <script>
+    window.onerror = function (message, source, lineno, colno, error) {
+      const debugConsole = document.getElementById('debug-console');
+      if (debugConsole) {
+        debugConsole.innerHTML += '<div style="color: red; background: rgba(0,0,0,0.8); border-bottom: 1px solid white;">ERROR: ' + message + '</div>';
+      }
+    };
+  </script>
+
+  <script>
     AFRAME.registerComponent('marker-logger', {
       init: function () {
         const debugConsole = document.getElementById('debug-console');
@@ -32,8 +41,7 @@
       AR.js Scene
       - sourceWidth/Height and displayWidth/Height ensure better resolution on mobile
     -->
-  <a-scene embedded
-    arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
+  <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono; maxDetectionRate: 30;">
 
     <!-- 
            IMPORTANT: CUSTOM MARKER SETUP
