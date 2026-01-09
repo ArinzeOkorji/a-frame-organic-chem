@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Inorganic Chemistry AR - Methane</title>
+  <title>Inorganic Chemistry AR - Hydrogen</title>
   <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.4.5/aframe/build/aframe-ar.js"></script>
 
@@ -12,7 +12,7 @@
     AFRAME.registerComponent('scene-logger', {
       init: function () {
         const log = document.createElement('div');
-        log.innerText = 'System Ready: Scan Barcode 6';
+        log.innerText = 'System Ready: Scan Barcode 1 (Hydrogen)';
         log.style.cssText = 'position:fixed; top:10px; left:10px; color:lime; background:rgba(0,0,0,0.5); padding:5px; z-index:999; font-family:sans-serif;';
         document.body.appendChild(log);
       }
@@ -30,38 +30,24 @@
     arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3; sourceWidth: 640; sourceHeight: 480; displayWidth: 640; displayHeight: 480;">
 
     <!-- 
-      BARCODE MARKER 6
-      Uses the 3x3 Matrix Code with value 6.
-      Generate here: https://au.gmented.com/app/marker/marker.php
+      BARCODE MARKER 1: HYDROGEN (Protium)
+      1 Proton (Green), 0 Neutrons, 1 Electron (Blueish-White)
     -->
-    <a-marker type="barcode" value="6">
+    <a-marker type="barcode" value="1">
 
-      <!-- Methane (CH4) Molecule Container -->
-      <a-entity position="0 0.5 0" scale="0.5 0.5 0.5">
-        <!-- Carbon Atom (Central) -->
-        <a-sphere color="#2C3E50" radius="0.4" position="0 0 0"></a-sphere>
+      <!-- Nucleus: Single Proton (Green) -->
+      <a-sphere color="#2ECC71" radius="0.2" position="0 0.5 0"></a-sphere>
 
-        <!-- Hydrogen Atoms -->
-        <!-- Top -->
-        <a-sphere color="#ECF0F1" radius="0.2" position="0 0.6 0"></a-sphere>
-        <!-- Bottom Left Front -->
-        <a-sphere color="#ECF0F1" radius="0.2" position="-0.5 -0.3 0.5"></a-sphere>
-        <!-- Bottom Right Front -->
-        <a-sphere color="#ECF0F1" radius="0.2" position="0.5 -0.3 0.5"></a-sphere>
-        <!-- Back -->
-        <a-sphere color="#ECF0F1" radius="0.2" position="0 -0.3 -0.7"></a-sphere>
-
-        <!-- Bonds (Cylinders) -->
-        <a-cylinder color="#BDC3C7" height="0.6" radius="0.05" position="0 0.3 0"></a-cylinder>
-        <a-cylinder color="#BDC3C7" height="0.6" radius="0.05" position="-0.25 -0.15 0.25"
-          rotation="0 0 35"></a-cylinder>
-        <a-cylinder color="#BDC3C7" height="0.6" radius="0.05" position="0.25 -0.15 0.25"
-          rotation="0 0 -35"></a-cylinder>
-        <a-cylinder color="#BDC3C7" height="0.6" radius="0.05" position="0 -0.15 -0.35" rotation="45 0 0"></a-cylinder>
-
-        <!-- Label -->
-        <a-text value="Methane (CH4)" align="center" position="0 1 0" color="black" scale="2 2 2"></a-text>
+      <!-- Electron Orbit Group 
+           The entire entity rotates, carrying the child electron sphere with it.
+      -->
+      <a-entity position="0 0.5 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 3000; easing: linear">
+        <!-- Electron (Blueish-White) pushed out x=0.6 from center -->
+        <a-sphere color="#AED6F1" radius="0.08" position="0.6 0 0"></a-sphere>
       </a-entity>
+
+      <!-- Label -->
+      <a-text value="Hydrogen (H)" align="center" position="0 1.2 0" color="black" scale="2 2 2"></a-text>
 
     </a-marker>
 
