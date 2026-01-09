@@ -12,8 +12,8 @@
     AFRAME.registerComponent('scene-logger', {
       init: function () {
         const log = document.createElement('div');
-        log.innerText = 'Scene Ready (Hiro Mode)';
-        log.style.cssText = 'position:fixed; top:10px; left:10px; color:cyan; background:rgba(0,0,0,0.5); padding:5px; z-index:999';
+        log.innerText = 'System Ready: Scan Barcode 6';
+        log.style.cssText = 'position:fixed; top:10px; left:10px; color:lime; background:rgba(0,0,0,0.5); padding:5px; z-index:999; font-family:sans-serif;';
         document.body.appendChild(log);
       }
     });
@@ -23,18 +23,18 @@
 <body style="margin: 0; overflow: hidden;">
   <!-- 
       AR.js Scene
-      - sourceWidth/Height and displayWidth/Height ensure better resolution on mobile
-      - vr-mode-ui="enabled: false": Removes VR button that can break AR layout
-      - renderer: Logarithmic depth buffer prevents z-fighting
+      - detectionMode: mono_and_matrix: Enables both pattern and barcode detection
+      - matrixCodeType: 3x3: Defines the barcode type (values 0-63)
     -->
   <a-scene embedded scene-logger vr-mode-ui="enabled: false" renderer="logarithmicDepthBuffer: true; precision: medium;"
-    arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono; maxDetectionRate: 30; sourceWidth: 640; sourceHeight: 480; displayWidth: 640; displayHeight: 480;">
+    arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3; sourceWidth: 640; sourceHeight: 480; displayWidth: 640; displayHeight: 480;">
 
-    <!-- HIRO MARKER (Testing Methane Model) -->
-    <a-marker preset="hiro">
-
-      <!-- Debug Base (Red Box) to guarantee tracking visibility -->
-      <a-box position="0 0.1 0" scale="1 0.1 1" material="color: red; opacity: 0.3"></a-box>
+    <!-- 
+      BARCODE MARKER 6
+      Uses the 3x3 Matrix Code with value 6.
+      Generate here: https://au.gmented.com/app/marker/marker.php
+    -->
+    <a-marker type="barcode" value="6">
 
       <!-- Methane (CH4) Molecule Container -->
       <a-entity position="0 0.5 0" scale="0.5 0.5 0.5">
@@ -65,7 +65,7 @@
 
     </a-marker>
 
-    <!-- AR Camera (No Look Controls) -->
+    <!-- AR Camera -->
     <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
   </a-scene>
 
