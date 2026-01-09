@@ -8,9 +8,26 @@
   <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.4.5/aframe/build/aframe-ar.js"></script>
 
+  <script>
+    AFRAME.registerComponent('marker-logger', {
+      init: function () {
+        const debugConsole = document.getElementById('debug-console');
+        this.el.addEventListener('markerFound', () => {
+          if (debugConsole) debugConsole.innerHTML += '<div style="color: lime">Found ' + (this.el.id || 'marker') + '</div>';
+        });
+        this.el.addEventListener('markerLost', () => {
+          if (debugConsole) debugConsole.innerHTML += '<div style="color: red">Lost ' + (this.el.id || 'marker') + '</div>';
+        });
+      }
+    });
+  </script>
 </head>
 
 <body style="margin: 0; overflow: hidden;">
+  <div id="debug-console"
+    style="position: fixed; top: 10px; left: 10px; background: rgba(0,0,0,0.5); color: white; padding: 5px; font-family: monospace; z-index: 9999; pointer-events: none; max-height: 200px; overflow-y: hidden;">
+    Debug Log...<br>
+  </div>
   <!-- 
       AR.js Scene
       - sourceWidth/Height and displayWidth/Height ensure better resolution on mobile
@@ -27,7 +44,7 @@
            5. Download the .patt file.
            6. Save it as 'public/markers/pattern-methane.patt'.
       -->
-    <a-marker type="pattern" url="markers/pattern-methane.patt">
+    <a-marker type="pattern" url="markers/pattern-methane.patt" id="methane-marker" marker-logger>
 
       <!-- Methane (CH4) Molecule Container -->
       <a-entity position="0 0.5 0" scale="0.5 0.5 0.5">
@@ -56,6 +73,11 @@
         <a-text value="Methane (CH4)" align="center" position="0 1 0" color="black" scale="2 2 2"></a-text>
       </a-entity>
 
+    </a-marker>
+
+    <!-- Fallback Hiro Marker -->
+    <a-marker preset="hiro" id="hiro-marker" marker-logger>
+      <a-box position="0 0.5 0" material="color: red; opacity: 0.8"></a-box>
     </a-marker>
 
     <a-entity camera></a-entity>
